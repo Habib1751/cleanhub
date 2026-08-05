@@ -63,7 +63,7 @@ export default function QuoteModal({
             onClick={(e) => e.stopPropagation()}
           >
             <div className="grid grid-cols-4">
-              <div className="relative h-20 sm:h-24">
+              <div className="relative h-20 bg-slate-200 sm:h-24">
                 <Image
                   src="/images/solar-cleaning.jpg"
                   alt="Technician cleaning solar panels with a wiper"
@@ -75,9 +75,9 @@ export default function QuoteModal({
                   Solar
                 </span>
               </div>
-              <div className="relative h-20 sm:h-24">
+              <div className="relative h-20 bg-slate-200 sm:h-24">
                 <Image
-                  src="/images/ac-cleaning.png"
+                  src="/images/ac-cleaning.jpg"
                   alt="Technician servicing an outdoor AC unit"
                   fill
                   className="object-cover"
@@ -87,9 +87,9 @@ export default function QuoteModal({
                   AC
                 </span>
               </div>
-              <div className="relative h-20 sm:h-24">
+              <div className="relative h-20 bg-slate-200 sm:h-24">
                 <Image
-                  src="/images/water-tank-cleaning.png"
+                  src="/images/water-tank-cleaning.jpg"
                   alt="Rooftop water tank"
                   fill
                   className="object-cover"
@@ -99,9 +99,9 @@ export default function QuoteModal({
                   Water Tank
                 </span>
               </div>
-              <div className="relative h-20 sm:h-24">
+              <div className="relative h-20 bg-slate-200 sm:h-24">
                 <Image
-                  src="/images/cctv-installation.png"
+                  src="/images/cctv-installation.jpg"
                   alt="CCTV security camera mounted on a wall"
                   fill
                   className="object-cover"

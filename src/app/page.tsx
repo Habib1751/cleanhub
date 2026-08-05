@@ -32,21 +32,21 @@ const heroTiles: {
   {
     kind: "ac",
     label: "AC Cleaning",
-    image: "/images/ac-cleaning.png",
+    image: "/images/ac-cleaning.jpg",
     alt: "Technician servicing an outdoor AC unit",
     service: "AC Service",
   },
   {
     kind: "waterTank",
     label: "Water Tank Cleaning",
-    image: "/images/water-tank-cleaning.png",
+    image: "/images/water-tank-cleaning.jpg",
     alt: "Rooftop water tank",
     service: "Water Tank Cleaning",
   },
   {
     kind: "cctv",
     label: "CCTV Installation",
-    image: "/images/cctv-installation.png",
+    image: "/images/cctv-installation.jpg",
     alt: "CCTV security camera mounted on a wall",
     service: "CCTV Installation",
   },
@@ -103,7 +103,7 @@ const serviceCards: {
     description:
       "High-pressure gun wash for your AC's outdoor unit to clear debris and improve cooling performance.",
     price: `Rs. ${siteConfig.pricing.ac.flat} / unit`,
-    image: "/images/ac-cleaning.png",
+    image: "/images/ac-cleaning.jpg",
     alt: "Technician servicing an outdoor AC unit with a pressure washer",
     service: "AC Service",
   },
@@ -114,7 +114,7 @@ const serviceCards: {
     description:
       "Full drain, scrub, and sanitize for your rooftop or underground water tank — safe, clean drinking water for your home.",
     price: `Rs. ${siteConfig.pricing.waterTank.flat} / tank`,
-    image: "/images/water-tank-cleaning.png",
+    image: "/images/water-tank-cleaning.jpg",
     alt: "Rooftop water tank",
     service: "Water Tank Cleaning",
   },
@@ -125,7 +125,7 @@ const serviceCards: {
     description:
       "Secure your home or business with professionally installed CCTV cameras, wired and configured on-site.",
     price: `Rs. ${siteConfig.pricing.cctv.perCamera} / camera`,
-    image: "/images/cctv-installation.png",
+    image: "/images/cctv-installation.jpg",
     alt: "CCTV security camera mounted on a wall",
     service: "CCTV Installation",
   },
@@ -176,7 +176,7 @@ export default function Home() {
               <GetQuoteButton
                 key={tile.label}
                 service={tile.service}
-                className="group relative h-40 overflow-hidden rounded-2xl text-left shadow-md transition hover:shadow-xl sm:h-48"
+                className="group relative h-40 overflow-hidden rounded-2xl bg-slate-200 text-left shadow-md transition hover:shadow-xl sm:h-48"
               >
                 <Image
                   src={tile.image}
@@ -244,7 +244,7 @@ export default function Home() {
               service={card.service}
               className="group w-full scroll-mt-24 overflow-hidden rounded-2xl border border-slate-200 bg-white text-left shadow-sm transition hover:-translate-y-1 hover:shadow-xl"
             >
-              <div className="relative h-56 w-full overflow-hidden sm:h-64">
+              <div className="relative h-56 w-full overflow-hidden bg-slate-200 sm:h-64">
                 <Image
                   src={card.image}
                   alt={card.alt}
@@ -270,7 +270,7 @@ export default function Home() {
 
       <section className="mx-auto w-full max-w-5xl bg-white px-5 py-16">
         <div className="overflow-hidden rounded-2xl border border-slate-200 bg-white shadow-sm">
-          <div className="relative h-56 w-full sm:h-96">
+          <div className="relative h-56 w-full bg-slate-200 sm:h-96">
             <Image
               src="/images/solar-before-after.jpg"
               alt="Solar panel before and after cleaning comparison"
@@ -295,7 +295,7 @@ export default function Home() {
         </h2>
         <div className="mt-10 grid gap-8 sm:grid-cols-2">
           <div className="overflow-hidden rounded-2xl border border-slate-200 bg-white shadow-sm">
-            <div className="relative h-64 w-full sm:h-full">
+            <div className="relative h-64 w-full bg-slate-200 sm:h-full">
               <Image
                 src="/images/solar-doorstep.jpg"
                 alt="Technician cleaning solar panels on a rooftop overlooking the neighborhood"
@@ -355,7 +355,7 @@ export default function Home() {
           {galleryImages.map((img) => (
             <div
               key={img.src}
-              className="group relative h-64 overflow-hidden rounded-2xl border border-slate-200 shadow-sm"
+              className="group relative h-64 overflow-hidden rounded-2xl border border-slate-200 bg-slate-200 shadow-sm"
             >
               <Image
                 src={img.src}
@@ -372,7 +372,7 @@ export default function Home() {
 
       <section className="mx-auto w-full max-w-5xl bg-white px-5 py-16">
         <div className="grid items-center gap-8 overflow-hidden rounded-2xl border border-slate-200 bg-white shadow-sm sm:grid-cols-2">
-          <div className="relative h-64 w-full sm:h-full">
+          <div className="relative h-64 w-full bg-slate-200 sm:h-full">
             <Image
               src="/images/happy-customer.jpg"
               alt="Satisfied customer giving a thumbs up on a rooftop with clean solar panels"
