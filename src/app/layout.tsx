@@ -32,7 +32,7 @@ export default function RootLayout({
       lang="en"
       className={`${geistSans.variable} ${geistMono.variable} h-full antialiased`}
     >
-      <body className="flex min-h-full flex-col overflow-x-hidden bg-white text-slate-900">
+      <body className="flex min-h-full flex-col overflow-x-hidden bg-white font-sans text-slate-900">
         <QuoteModalProvider>
           <Navbar />
           <main className="flex flex-1 flex-col">{children}</main>

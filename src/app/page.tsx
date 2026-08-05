@@ -133,7 +133,7 @@ const serviceCards: {
 
 export default function Home() {
   return (
-    <div className="flex flex-col">
+    <div className="flex flex-col bg-white">
       <section className="bg-gradient-to-b from-sky-50 via-white to-white px-5 py-14 sm:py-20">
         <div className="mx-auto grid w-full max-w-6xl gap-12 lg:grid-cols-2 lg:items-center">
           <div>
@@ -216,7 +216,7 @@ export default function Home() {
         </div>
       </section>
 
-      <section className="mx-auto w-full max-w-4xl px-5 py-16 text-center">
+      <section className="mx-auto w-full max-w-4xl bg-white px-5 py-16 text-center">
         <h2 className="text-2xl font-bold text-slate-900 sm:text-3xl">
           About {siteConfig.businessName}
         </h2>
@@ -228,7 +228,7 @@ export default function Home() {
         </p>
       </section>
 
-      <section id="services" className="mx-auto w-full max-w-6xl px-5 py-4">
+      <section id="services" className="mx-auto w-full max-w-6xl bg-white px-5 py-4">
         <div className="text-center">
           <h2 className="text-2xl font-bold text-slate-900 sm:text-3xl">Our Services</h2>
           <p className="mt-2 text-sm text-slate-500">
@@ -268,7 +268,7 @@ export default function Home() {
         </div>
       </section>
 
-      <section className="mx-auto w-full max-w-5xl px-5 py-16">
+      <section className="mx-auto w-full max-w-5xl bg-white px-5 py-16">
         <div className="overflow-hidden rounded-2xl border border-slate-200 bg-white shadow-sm">
           <div className="relative h-56 w-full sm:h-96">
             <Image
@@ -289,7 +289,7 @@ export default function Home() {
         </div>
       </section>
 
-      <section className="mx-auto w-full max-w-5xl px-5 py-4">
+      <section className="mx-auto w-full max-w-5xl bg-white px-5 py-4">
         <h2 className="text-center text-2xl font-bold text-slate-900 sm:text-3xl">
           Book Your Service in Simple Steps
         </h2>
@@ -346,7 +346,7 @@ export default function Home() {
         </div>
       </section>
 
-      <section id="gallery" className="mx-auto w-full max-w-6xl scroll-mt-24 px-5 py-16">
+      <section id="gallery" className="mx-auto w-full max-w-6xl scroll-mt-24 bg-white px-5 py-16">
         <div className="text-center">
           <h2 className="text-2xl font-bold text-slate-900 sm:text-3xl">Our Work</h2>
           <p className="mt-2 text-sm text-slate-500">Real jobs, real results, across DHA.</p>
@@ -370,7 +370,7 @@ export default function Home() {
         </div>
       </section>
 
-      <section className="mx-auto w-full max-w-5xl px-5 py-16">
+      <section className="mx-auto w-full max-w-5xl bg-white px-5 py-16">
         <div className="grid items-center gap-8 overflow-hidden rounded-2xl border border-slate-200 bg-white shadow-sm sm:grid-cols-2">
           <div className="relative h-64 w-full sm:h-full">
             <Image

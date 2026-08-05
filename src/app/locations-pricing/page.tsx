@@ -15,7 +15,7 @@ export default function LocationsPricing() {
   const { solar, ac, waterTank, cctv } = siteConfig.pricing;
 
   return (
-    <div className="mx-auto w-full max-w-5xl px-5 py-12">
+    <div className="mx-auto w-full max-w-5xl bg-white px-5 py-12">
       <header className="text-center">
         <h1 className="text-3xl font-extrabold tracking-tight text-slate-900 sm:text-4xl">
           Service Areas &amp; Pricing
