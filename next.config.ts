@@ -5,11 +5,13 @@ const nextConfig: NextConfig = {
     root: __dirname,
   },
   images: {
-    // Source photos are compressed to a max width of 1600px — requesting
-    // larger buckets forces Vercel's optimizer to upscale on every cold
-    // request, which took 80+ seconds and made images appear broken.
-    deviceSizes: [390, 640, 750, 828, 1080, 1200, 1600],
-    imageSizes: [16, 32, 48, 64, 96, 128, 256, 384],
+    // Vercel's on-demand image optimization is taking 25-80+ seconds per
+    // request on this deployment regardless of requested size (even
+    // repeated/cached requests), making every photo on the site appear
+    // broken. All source photos are already compressed to proper web
+    // sizes (150-315KB) ahead of time, so skip the optimizer entirely
+    // and serve the static files directly.
+    unoptimized: true,
   },
 };
 
