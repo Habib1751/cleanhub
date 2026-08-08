@@ -11,8 +11,9 @@ import { siteConfig } from "@/lib/siteConfig";
 
 const galleryImages = [
   { src: "/images/gallery-solar-1.jpg", alt: "Technician squeegee-cleaning a solar panel" },
-  { src: "/images/gallery-solar-2.jpg", alt: "Technician brush-cleaning a rooftop solar array" },
-  { src: "/images/gallery-solar-3.jpg", alt: "Close-up of a technician clearing dust off a solar panel" },
+  { src: "/images/ac-cleaning.jpg", alt: "Technician servicing an outdoor AC unit" },
+  { src: "/images/water-tank-cleaning.jpg", alt: "Rooftop water tank" },
+  { src: "/images/cctv-installation.jpg", alt: "CCTV security camera mounted on a wall" },
 ];
 
 const heroTiles: {
@@ -184,7 +185,7 @@ export default function Home() {
                   fill
                   priority
                   className="object-cover transition duration-500 group-hover:scale-105"
-                  sizes="(min-width: 1024px) 25vw, 50vw"
+                  sizes="(min-width: 1024px) 25vw, (min-width: 640px) 50vw, 100vw"
                 />
                 <div className="absolute bottom-3 left-3 right-3 flex items-center gap-2 rounded-full bg-white/95 py-1 pl-1 pr-3 shadow-md">
                   <span className="flex h-7 w-7 shrink-0 items-center justify-center rounded-full bg-blue-700 text-white">
@@ -351,7 +352,7 @@ export default function Home() {
           <h2 className="text-2xl font-bold text-slate-900 sm:text-3xl">Our Work</h2>
           <p className="mt-2 text-sm text-slate-500">Real jobs, real results, across DHA.</p>
         </div>
-        <div className="mt-10 grid gap-6 sm:grid-cols-3">
+        <div className="mt-10 grid gap-6 sm:grid-cols-2 lg:grid-cols-4">
           {galleryImages.map((img) => (
             <div
               key={img.src}
@@ -362,7 +363,7 @@ export default function Home() {
                 alt={img.alt}
                 fill
                 className="object-cover transition duration-500 group-hover:scale-110"
-                sizes="(min-width: 640px) 33vw, 100vw"
+                sizes="(min-width: 1024px) 25vw, (min-width: 640px) 50vw, 100vw"
               />
               <div className="absolute inset-0 bg-gradient-to-t from-black/40 via-transparent to-transparent opacity-0 transition group-hover:opacity-100" />
             </div>
