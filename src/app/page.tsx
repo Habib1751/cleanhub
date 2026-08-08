@@ -137,7 +137,7 @@ export default function Home() {
     <div className="flex flex-col bg-white">
       <section className="bg-gradient-to-b from-sky-50 via-white to-white px-5 py-14 sm:py-20">
         <div className="mx-auto grid w-full max-w-6xl gap-12 lg:grid-cols-2 lg:items-center">
-          <div>
+          <div className="min-w-0">
             <p className="mb-4 w-fit rounded-full bg-blue-100 px-4 py-1.5 text-xs font-semibold tracking-wide text-blue-800">
               Now serving {siteConfig.serviceCity} — DHA, all phases
             </p>
@@ -172,7 +172,7 @@ export default function Home() {
             </div>
           </div>
 
-          <div className="grid grid-cols-1 gap-4 sm:grid-cols-2">
+          <div className="min-w-0 grid grid-cols-1 gap-4 sm:grid-cols-2">
             {heroTiles.map((tile) => (
               <GetQuoteButton
                 key={tile.label}
