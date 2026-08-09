@@ -151,7 +151,7 @@ export default function Home() {
                 <FileText className="h-4 w-4" /> Get a Free Quote
               </GetQuoteButton>
               <GetQuoteButton className="flex items-center gap-2 rounded-full border border-green-600 bg-white px-6 py-3 text-sm font-semibold text-green-700 shadow-sm transition hover:bg-green-50">
-                <MessageCircle className="h-4 w-4" /> Message Us
+                <MessageCircle className="h-4 w-4" /> Send Inquiry
               </GetQuoteButton>
               <AnimatedLink
                 href="/locations-pricing"

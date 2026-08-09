@@ -70,13 +70,14 @@ export default function QuoteModalProvider({ children }: { children: ReactNode }
           href={siteConfig.whatsappHref}
           target="_blank"
           rel="noopener noreferrer"
-          className="relative flex items-center gap-2 rounded-full bg-emerald-800 px-5 py-3 text-sm font-semibold text-white shadow-lg"
+          aria-label="Message us on WhatsApp"
+          className="relative flex h-14 w-14 items-center justify-center rounded-full bg-emerald-800 text-white shadow-lg"
           animate={{ y: [0, -12, 0] }}
           transition={{ duration: 1.8, repeat: Infinity, ease: "easeInOut" }}
           whileHover={{ scale: 1.1 }}
           whileTap={{ scale: 0.95 }}
         >
-          <WhatsAppIcon className="h-4 w-4" /> Message Us
+          <WhatsAppIcon className="h-7 w-7" />
         </motion.a>
       </motion.div>
 

@@ -8,7 +8,7 @@ export const siteConfig = {
     "CCTV Installation",
   ],
   heroDescription:
-    "We provide reliable and high-quality cleaning and installation services for homes and businesses. Your satisfaction is our priority.",
+    "We provide reliable CCTV installation, security solutions, and high-quality cleaning services for homes and businesses. Your safety and satisfaction are our top priorities.",
   phone: "0321-3816401",
   phoneHref: "tel:+923213816401",
   phoneSecondary: "0300-8838975",
