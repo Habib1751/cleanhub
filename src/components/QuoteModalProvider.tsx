@@ -3,6 +3,8 @@
 import { createContext, useContext, useEffect, useState, type ReactNode } from "react";
 import { motion } from "framer-motion";
 import QuoteModal from "@/components/QuoteModal";
+import WhatsAppIcon from "@/components/icons/WhatsAppIcon";
+import { siteConfig } from "@/lib/siteConfig";
 
 export type Service =
   | "Solar Panel Cleaning"
@@ -64,17 +66,18 @@ export default function QuoteModalProvider({ children }: { children: ReactNode }
         animate={{ opacity: 1, y: 0 }}
         transition={{ delay: 0.6, duration: 0.4, ease: "easeOut" }}
       >
-        <motion.button
-          type="button"
-          onClick={() => openModal()}
-          className="relative flex items-center gap-2 rounded-full bg-green-600 px-5 py-3 text-sm font-semibold text-white shadow-lg"
+        <motion.a
+          href={siteConfig.whatsappHref}
+          target="_blank"
+          rel="noopener noreferrer"
+          className="relative flex items-center gap-2 rounded-full bg-emerald-800 px-5 py-3 text-sm font-semibold text-white shadow-lg"
           animate={{ y: [0, -12, 0] }}
           transition={{ duration: 1.8, repeat: Infinity, ease: "easeInOut" }}
           whileHover={{ scale: 1.1 }}
           whileTap={{ scale: 0.95 }}
         >
-          👉 Click for Service
-        </motion.button>
+          <WhatsAppIcon className="h-4 w-4" /> Message Us
+        </motion.a>
       </motion.div>
 
       <QuoteModal

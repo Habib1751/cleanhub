@@ -78,51 +78,54 @@ export default function LocationsPricing() {
 
         <div className="mt-4 grid gap-6 sm:grid-cols-2 lg:grid-cols-4">
           <div className="rounded-2xl border border-slate-200 bg-white p-6 shadow-sm transition hover:-translate-y-1 hover:shadow-lg">
-            <h3 className="text-lg font-bold text-slate-900">Solar Panel Cleaning</h3>
+            <h3 className="text-lg font-bold text-slate-900">Solar Panel</h3>
             <p className="mt-3 text-3xl font-extrabold text-blue-700">
               Rs. {solar.perPlate}
-              <span className="ml-1 text-sm font-medium text-slate-500">/ plate</span>
+              <span className="ml-1 text-sm font-medium text-slate-500">/ single plate</span>
             </p>
-            <p className="mt-3 text-sm text-slate-600">
-              + Delivery &amp; fuel charges from{" "}
-              <span className="font-semibold text-slate-800">
-                Rs. {solar.deliveryFuelFrom}
-              </span>
-            </p>
-            <p className="mt-2 text-xs text-slate-500">{solar.note}</p>
+            <p className="mt-3 text-sm font-semibold text-green-700">{solar.note}</p>
           </div>
 
           <div className="rounded-2xl border border-slate-200 bg-white p-6 shadow-sm transition hover:-translate-y-1 hover:shadow-lg">
             <h3 className="text-lg font-bold text-slate-900">AC Service</h3>
             <p className="mt-3 text-3xl font-extrabold text-blue-700">
-              Rs. {ac.flat}
+              Rs. {ac.first}
               <span className="ml-1 text-sm font-medium text-slate-500">/ unit</span>
             </p>
-            <p className="mt-2 text-xs text-slate-500">{ac.note}</p>
+            <p className="mt-3 text-sm text-slate-600">
+              More AC ={" "}
+              <span className="font-semibold text-slate-800">Rs. {ac.additional} each</span>
+            </p>
           </div>
 
           <div className="rounded-2xl border border-slate-200 bg-white p-6 shadow-sm transition hover:-translate-y-1 hover:shadow-lg">
-            <h3 className="text-lg font-bold text-slate-900">Water Tank Cleaning</h3>
+            <h3 className="text-lg font-bold text-slate-900">Water Tank</h3>
             <p className="mt-3 text-3xl font-extrabold text-blue-700">
-              Rs. {waterTank.flat}
+              Rs. {waterTank.first}
               <span className="ml-1 text-sm font-medium text-slate-500">/ tank</span>
             </p>
-            <p className="mt-2 text-xs text-slate-500">{waterTank.note}</p>
+            <p className="mt-3 text-sm text-slate-600">
+              More Tanks ={" "}
+              <span className="font-semibold text-slate-800">
+                Rs. {waterTank.additional} each tank
+              </span>
+            </p>
           </div>
 
           <div className="rounded-2xl border border-slate-200 bg-white p-6 shadow-sm transition hover:-translate-y-1 hover:shadow-lg">
-            <h3 className="text-lg font-bold text-slate-900">CCTV Camera Installation</h3>
-            <p className="mt-3 text-3xl font-extrabold text-blue-700">
-              Rs. {cctv.perCamera}
-              <span className="ml-1 text-sm font-medium text-slate-500">/ camera</span>
-            </p>
-            <p className="mt-2 text-xs text-slate-500">{cctv.note}</p>
+            <h3 className="text-lg font-bold text-slate-900">CCTV Cameras</h3>
+            <p className="mt-3 text-3xl font-extrabold text-blue-700">Rs. {cctv.packagePrice}</p>
+            <ul className="mt-3 space-y-1 text-sm text-slate-600">
+              {cctv.includes.map((item) => (
+                <li key={item}>• {item}</li>
+              ))}
+            </ul>
+            <p className="mt-3 text-xs text-slate-500">{cctv.note}</p>
           </div>
         </div>
 
         <p className="mt-6 text-center text-xs text-slate-500">
-          Prices may vary slightly depending on the number of plates/units/cameras and the
-          scope of work. Final cost is always confirmed with you before the visit.
+          Final cost is always confirmed with you before the visit.
         </p>
       </section>
 

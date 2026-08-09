@@ -17,7 +17,6 @@ const SERVICE_LINKS = [
 const NAV_LINKS = [
   { label: "About Us", href: "/#about" },
   { label: "Areas We Serve", href: "/locations-pricing#areas" },
-  { label: "Gallery", href: "/#gallery" },
   { label: "Pricing", href: "/locations-pricing#pricing" },
   { label: "Contact Us", href: "/#contact" },
 ];

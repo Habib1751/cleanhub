@@ -54,20 +54,28 @@ export const siteConfig = {
   pricing: {
     solar: {
       perPlate: 950,
-      deliveryFuelFrom: 1100,
-      note: "Delivery & fuel charges start from Rs. 1,100 and vary depending on your area and the size of the job.",
+      note: "More panels = more discount.",
     },
     ac: {
-      flat: 3000,
-      note: "Standard price per outdoor unit — deep pressure-wash cleaning at your doorstep.",
+      first: 3500,
+      additional: 2500,
+      note: "First unit Rs. 3,500 — additional units Rs. 2,500 each.",
     },
     waterTank: {
-      flat: 2500,
-      note: "Standard price per tank — full drain, scrub & sanitize. Varies with tank size.",
+      first: 3500,
+      additional: 3000,
+      note: "First tank Rs. 3,500 — additional tanks Rs. 3,000 each.",
     },
     cctv: {
-      perCamera: 1500,
-      note: "Installation & wiring labor only, per camera — camera hardware not included. Final cost depends on number of cameras and cable length.",
+      packagePrice: 30000,
+      includes: [
+        "4 Cameras (2MP)",
+        "1 DVR",
+        "500GB Hard Drive",
+        "100ft Wire",
+        "Complete Installation",
+      ],
+      note: "This is our basic CCTV plan — it can be enhanced based on your requirements.",
     },
   },
 } as const;

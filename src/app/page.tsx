@@ -1,20 +1,12 @@
 import Image from "next/image";
-import { FileText, MapPin } from "lucide-react";
+import { FileText, MapPin, MessageCircle } from "lucide-react";
 import ServiceIcon from "@/components/ServiceIcon";
 import TrustIcon from "@/components/TrustIcon";
 import GetQuoteButton from "@/components/GetQuoteButton";
-import WhatsAppIcon from "@/components/icons/WhatsAppIcon";
 import ServicesMarquee from "@/components/ServicesMarquee";
-import { AnimatedAnchor, AnimatedLink } from "@/components/Animated";
+import { AnimatedLink } from "@/components/Animated";
 import type { Service } from "@/components/QuoteModalProvider";
 import { siteConfig } from "@/lib/siteConfig";
-
-const galleryImages = [
-  { src: "/images/gallery-solar-1.jpg", alt: "Technician squeegee-cleaning a solar panel" },
-  { src: "/images/ac-cleaning.jpg", alt: "Technician servicing an outdoor AC unit" },
-  { src: "/images/water-tank-cleaning.jpg", alt: "Rooftop water tank" },
-  { src: "/images/cctv-installation.jpg", alt: "CCTV security camera mounted on a wall" },
-];
 
 const heroTiles: {
   kind: "solar" | "ac" | "waterTank" | "cctv";
@@ -22,13 +14,16 @@ const heroTiles: {
   image: string;
   alt: string;
   service: Service;
+  // Order on mobile (1 column); desktop keeps this array's natural order via sm:order-none.
+  mobileOrder: number;
 }[] = [
   {
-    kind: "solar",
-    label: "Solar Panel Cleaning",
-    image: "/images/solar-cleaning.jpg",
-    alt: "Technician cleaning solar panels with a wiper",
-    service: "Solar Panel Cleaning",
+    kind: "cctv",
+    label: "CCTV Installation",
+    image: "/images/cctv-installation.jpg",
+    alt: "CCTV security camera mounted on a wall",
+    service: "CCTV Installation",
+    mobileOrder: 1,
   },
   {
     kind: "ac",
@@ -36,6 +31,15 @@ const heroTiles: {
     image: "/images/ac-cleaning.jpg",
     alt: "Technician servicing an outdoor AC unit",
     service: "AC Service",
+    mobileOrder: 2,
+  },
+  {
+    kind: "solar",
+    label: "Solar Panel Cleaning",
+    image: "/images/solar-cleaning.jpg",
+    alt: "Technician cleaning solar panels with a wiper",
+    service: "Solar Panel Cleaning",
+    mobileOrder: 3,
   },
   {
     kind: "waterTank",
@@ -43,13 +47,7 @@ const heroTiles: {
     image: "/images/water-tank-cleaning.jpg",
     alt: "Rooftop water tank",
     service: "Water Tank Cleaning",
-  },
-  {
-    kind: "cctv",
-    label: "CCTV Installation",
-    image: "/images/cctv-installation.jpg",
-    alt: "CCTV security camera mounted on a wall",
-    service: "CCTV Installation",
+    mobileOrder: 4,
   },
 ];
 
@@ -92,7 +90,7 @@ const serviceCards: {
     title: "Solar Panel Cleaning",
     description:
       "Careful wiper-and-squeegee cleaning to remove dust and grime, restoring your panels' efficiency — panel by panel.",
-    price: `Rs. ${siteConfig.pricing.solar.perPlate} / plate`,
+    price: `Rs. ${siteConfig.pricing.solar.perPlate} / plate — more panels, more discount`,
     image: "/images/solar-cleaning.jpg",
     alt: "Technician cleaning solar panels with a wiper",
     service: "Solar Panel Cleaning",
@@ -103,7 +101,7 @@ const serviceCards: {
     title: "AC Outdoor Unit Cleaning",
     description:
       "High-pressure gun wash for your AC's outdoor unit to clear debris and improve cooling performance.",
-    price: `Rs. ${siteConfig.pricing.ac.flat} / unit`,
+    price: `Rs. ${siteConfig.pricing.ac.first} (1st unit) · Rs. ${siteConfig.pricing.ac.additional} each additional`,
     image: "/images/ac-cleaning.jpg",
     alt: "Technician servicing an outdoor AC unit with a pressure washer",
     service: "AC Service",
@@ -114,7 +112,7 @@ const serviceCards: {
     title: "Water Tank Cleaning",
     description:
       "Full drain, scrub, and sanitize for your rooftop or underground water tank — safe, clean drinking water for your home.",
-    price: `Rs. ${siteConfig.pricing.waterTank.flat} / tank`,
+    price: `Rs. ${siteConfig.pricing.waterTank.first} (1st tank) · Rs. ${siteConfig.pricing.waterTank.additional} each additional`,
     image: "/images/water-tank-cleaning.jpg",
     alt: "Rooftop water tank",
     service: "Water Tank Cleaning",
@@ -124,8 +122,8 @@ const serviceCards: {
     icon: "cctv",
     title: "CCTV Camera Installation",
     description:
-      "Secure your home or business with professionally installed CCTV cameras, wired and configured on-site.",
-    price: `Rs. ${siteConfig.pricing.cctv.perCamera} / camera`,
+      "Basic package: 4 cameras (2MP), 1 DVR, 500GB hard drive, 100ft wire, with complete installation. Can be enhanced to fit your needs.",
+    price: `Rs. ${siteConfig.pricing.cctv.packagePrice} basic package`,
     image: "/images/cctv-installation.jpg",
     alt: "CCTV security camera mounted on a wall",
     service: "CCTV Installation",
@@ -141,28 +139,20 @@ export default function Home() {
             <p className="mb-4 w-fit rounded-full bg-blue-100 px-4 py-1.5 text-xs font-semibold tracking-wide text-blue-800">
               Now serving {siteConfig.serviceCity} — DHA, all phases
             </p>
-            <h1 className="text-4xl font-extrabold leading-[1.1] tracking-tight text-slate-900 sm:text-6xl">
-              Professional Cleaning &amp;{" "}
-              <span className="bg-gradient-to-r from-blue-700 to-sky-500 bg-clip-text text-transparent">
-                Maintenance
-              </span>
+            <h1 className="text-3xl font-extrabold leading-[1.15] tracking-tight text-slate-900 sm:text-5xl">
+              Professional Security &amp; Cleaning Solutions for Homes &amp; Businesses
             </h1>
             <ServicesMarquee />
             <p className="mt-4 max-w-lg text-sm text-slate-600 sm:text-base">
               {siteConfig.heroDescription}
             </p>
             <div className="mt-8 flex flex-wrap items-center gap-3">
-              <GetQuoteButton className="flex items-center gap-2 rounded-full bg-blue-700 px-6 py-3 text-sm font-semibold text-white shadow-lg shadow-blue-700/20 transition hover:bg-blue-800 hover:shadow-xl">
+              <GetQuoteButton className="flex items-center gap-2 rounded-full border border-slate-300 bg-white px-6 py-3 text-sm font-semibold text-slate-700 shadow-sm transition hover:border-slate-400 hover:shadow-md">
                 <FileText className="h-4 w-4" /> Get a Free Quote
               </GetQuoteButton>
-              <AnimatedAnchor
-                href={siteConfig.whatsappHref}
-                target="_blank"
-                rel="noopener noreferrer"
-                className="flex items-center gap-2 rounded-full border border-green-600 bg-white px-6 py-3 text-sm font-semibold text-green-700 shadow-sm transition hover:bg-green-50"
-              >
-                <WhatsAppIcon className="h-4 w-4" /> WhatsApp Us
-              </AnimatedAnchor>
+              <GetQuoteButton className="flex items-center gap-2 rounded-full border border-green-600 bg-white px-6 py-3 text-sm font-semibold text-green-700 shadow-sm transition hover:bg-green-50">
+                <MessageCircle className="h-4 w-4" /> Message Us
+              </GetQuoteButton>
               <AnimatedLink
                 href="/locations-pricing"
                 className="flex items-center gap-2 rounded-full border border-slate-300 bg-white px-6 py-3 text-sm font-semibold text-slate-700 transition hover:border-slate-400 hover:shadow-md"
@@ -177,7 +167,8 @@ export default function Home() {
               <GetQuoteButton
                 key={tile.label}
                 service={tile.service}
-                className="group relative h-40 overflow-hidden rounded-2xl bg-slate-200 text-left shadow-md transition hover:shadow-xl sm:h-48"
+                className="group relative order-[var(--mobile-order)] h-40 overflow-hidden rounded-2xl bg-slate-200 text-left shadow-md transition hover:shadow-xl sm:order-none sm:h-48"
+                style={{ "--mobile-order": tile.mobileOrder } as React.CSSProperties}
               >
                 <Image
                   src={tile.image}
@@ -290,87 +281,6 @@ export default function Home() {
         </div>
       </section>
 
-      <section className="mx-auto w-full max-w-5xl bg-white px-5 py-4">
-        <h2 className="text-center text-2xl font-bold text-slate-900 sm:text-3xl">
-          Book Your Service in Simple Steps
-        </h2>
-        <div className="mt-10 grid gap-8 sm:grid-cols-2">
-          <div className="overflow-hidden rounded-2xl border border-slate-200 bg-white shadow-sm">
-            <div className="relative h-64 w-full bg-slate-200 sm:h-full">
-              <Image
-                src="/images/solar-doorstep.jpg"
-                alt="Technician cleaning solar panels on a rooftop overlooking the neighborhood"
-                fill
-                className="object-cover"
-                sizes="(min-width: 640px) 50vw, 100vw"
-              />
-            </div>
-          </div>
-          <div className="flex flex-col justify-center gap-6">
-            <div className="flex gap-4">
-              <span className="flex h-9 w-9 shrink-0 items-center justify-center rounded-full bg-blue-700 text-sm font-bold text-white shadow-md shadow-blue-700/30">
-                1
-              </span>
-              <div>
-                <p className="font-semibold text-slate-900">Call or WhatsApp us</p>
-                <p className="text-sm text-slate-600">
-                  Share your address and what needs service — solar panels, AC unit, water
-                  tank, CCTV, or all of them.
-                </p>
-              </div>
-            </div>
-            <div className="flex gap-4">
-              <span className="flex h-9 w-9 shrink-0 items-center justify-center rounded-full bg-blue-700 text-sm font-bold text-white shadow-md shadow-blue-700/30">
-                2
-              </span>
-              <div>
-                <p className="font-semibold text-slate-900">We arrive at your doorstep</p>
-                <p className="text-sm text-slate-600">
-                  Our technician comes fully equipped with wipers, squeegees, a pressure
-                  washer, and CCTV installation tools.
-                </p>
-              </div>
-            </div>
-            <div className="flex gap-4">
-              <span className="flex h-9 w-9 shrink-0 items-center justify-center rounded-full bg-blue-700 text-sm font-bold text-white shadow-md shadow-blue-700/30">
-                3
-              </span>
-              <div>
-                <p className="font-semibold text-slate-900">Sit back and enjoy the result</p>
-                <p className="text-sm text-slate-600">
-                  Cleaner panels, a cleaner AC unit, a clean tank, secure cameras — all at a
-                  clear, upfront price.
-                </p>
-              </div>
-            </div>
-          </div>
-        </div>
-      </section>
-
-      <section id="gallery" className="mx-auto w-full max-w-6xl scroll-mt-24 bg-white px-5 py-16">
-        <div className="text-center">
-          <h2 className="text-2xl font-bold text-slate-900 sm:text-3xl">Our Work</h2>
-          <p className="mt-2 text-sm text-slate-500">Real jobs, real results, across DHA.</p>
-        </div>
-        <div className="mt-10 grid gap-6 sm:grid-cols-2 lg:grid-cols-4">
-          {galleryImages.map((img) => (
-            <div
-              key={img.src}
-              className="group relative h-64 overflow-hidden rounded-2xl border border-slate-200 bg-slate-200 shadow-sm"
-            >
-              <Image
-                src={img.src}
-                alt={img.alt}
-                fill
-                className="object-cover transition duration-500 group-hover:scale-110"
-                sizes="(min-width: 1024px) 25vw, (min-width: 640px) 50vw, 100vw"
-              />
-              <div className="absolute inset-0 bg-gradient-to-t from-black/40 via-transparent to-transparent opacity-0 transition group-hover:opacity-100" />
-            </div>
-          ))}
-        </div>
-      </section>
-
       <section className="mx-auto w-full max-w-5xl bg-white px-5 py-16">
         <div className="grid items-center gap-8 overflow-hidden rounded-2xl border border-slate-200 bg-white shadow-sm sm:grid-cols-2">
           <div className="relative h-64 w-full bg-slate-200 sm:h-full">
@@ -391,14 +301,9 @@ export default function Home() {
               tanks, and CCTV setups, we treat every home like our own — clean work, fair
               prices, no surprises.
             </p>
-            <AnimatedAnchor
-              href={siteConfig.whatsappHref}
-              target="_blank"
-              rel="noopener noreferrer"
-              className="mt-5 inline-flex items-center gap-2 rounded-full bg-green-600 px-6 py-3 text-sm font-semibold text-white shadow-md transition hover:bg-green-700 hover:shadow-lg"
-            >
-              <WhatsAppIcon className="h-4 w-4" /> Book Your Service
-            </AnimatedAnchor>
+            <GetQuoteButton className="mt-5 inline-flex items-center gap-2 rounded-full bg-green-600 px-6 py-3 text-sm font-semibold text-white shadow-md transition hover:bg-green-700 hover:shadow-lg">
+              <MessageCircle className="h-4 w-4" /> Message Us
+            </GetQuoteButton>
           </div>
         </div>
       </section>
